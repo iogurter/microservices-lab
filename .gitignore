@@ -1,0 +1,63 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env.local
+
+# Docker
+docker-data/
+
+# Temporary
+tmp/
+temp/
+
+# Backup
+*.bak
+*.swp# IntelliJ IDEA
+.idea/
+*.iml
+
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env.local
+
+# Docker
+docker-data/
+
+# Temporary
+tmp/
+temp/
+
+# Backup
+*.bak
+*.swp
