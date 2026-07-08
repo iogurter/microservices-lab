@@ -1,0 +1,31 @@
+name: ${COMPOSE_PROJECT_NAME}
+
+networks:
+  lab-network:
+    name: lab-network
+    driver: bridge
+
+volumes:
+  lab-postgres-data:
+    name: lab-postgres-data
+
+  lab-redis-data:
+    name: lab-redis-data
+
+  lab-kafka-data:
+    name: lab-kafka-data
+
+  lab-rabbitmq-data:
+    name: lab-rabbitmq-data
+
+  lab-keycloak-data:
+    name: lab-keycloak-data
+
+  lab-prometheus-data:
+    name: lab-prometheus-data
+
+  lab-grafana-data:
+    name: lab-grafana-data
+
+  lab-loki-data:
+    name: lab-loki-data
