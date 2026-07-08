@@ -181,3 +181,38 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+  rabbitmq:
+    image: rabbitmq:${RABBITMQ_VERSION}
+
+    container_name: lab-rabbitmq
+
+    hostname: rabbitmq
+
+    restart: unless-stopped
+
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+
+    ports:
+      - "${RABBITMQ_PORT}:5672"
+      - "${RABBITMQ_UI_PORT}:15672"
+
+    volumes:
+      - lab-rabbitmq-data:/var/lib/rabbitmq
+
+    networks:
+      - lab-network
+
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_running"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
