@@ -64,3 +64,29 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+  redis-insight:
+    image: redis/redisinsight:${REDIS_INSIGHT_VERSION}
+
+    container_name: lab-redis-insight
+
+    restart: unless-stopped
+
+    ports:
+      - "${REDIS_INSIGHT_PORT}:5540"
+
+    volumes:
+      - lab-redis-insight-data:/data
+
+    networks:
+      - lab-network
+
+    depends_on:
+      redis:
+        condition: service_healthy
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

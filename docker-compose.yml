@@ -29,3 +29,6 @@ volumes:
 
   lab-loki-data:
     name: lab-loki-data
+
+  lab-redis-insight-data:
+    name: lab-redis-insight-data
