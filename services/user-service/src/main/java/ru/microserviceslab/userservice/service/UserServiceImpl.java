@@ -7,7 +7,7 @@ import ru.microserviceslab.userservice.entity.User;
 import ru.microserviceslab.userservice.mapper.UserMapper;
 import ru.microserviceslab.userservice.repository.UserRepository;
 import ru.microserviceslab.userservice.kafka.UserProducer;
-import ru.microserviceslab.userservice.event.UserCreatedEvent;
+import ru.microserviceslab.events.UserCreatedEvent;
 
 @Service
 public class UserServiceImpl implements UserService {

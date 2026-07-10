@@ -2,7 +2,7 @@ package ru.microserviceslab.userservice.kafka;
 
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
-import ru.microserviceslab.userservice.event.UserCreatedEvent;
+import ru.microserviceslab.events.UserCreatedEvent;
 
 @Component
 public class UserProducer {
