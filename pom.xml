@@ -41,6 +41,7 @@
         <module>services/user-service</module>
         <module>services/notification-service</module>
 	<module>services/api-gateway</module>
+	<module>services/eureka-server</module>
     </modules>
 
 </project>
