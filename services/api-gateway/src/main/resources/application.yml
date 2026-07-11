@@ -6,7 +6,7 @@ spring:
     gateway:
       routes:
         - id: user-service
-          uri: http://192.168.1.77:8081
+          uri: lb://USER-SERVICE
           predicates:
             - Path=/api/v1/users/**
 
@@ -18,3 +18,13 @@ management:
     web:
       exposure:
         include: health,info
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.77:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+  instance:
+    prefer-ip-address: true
