@@ -3,4 +3,4 @@ spring:
     name: api-gateway
 
   config:
-    import: optional:configserver:http://192.168.1.77:8888
+    import: optional:configserver:http://config-server:8888

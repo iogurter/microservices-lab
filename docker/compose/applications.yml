@@ -1,0 +1,157 @@
+services:
+
+  config-server:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+      args:
+        MODULE: config-server
+
+    image: microservices-lab/config-server:dev
+    container_name: config-server
+    hostname: config-server
+
+    ports:
+      - "8888:8888"
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider -q http://localhost:8888/actuator/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+    networks:
+      - lab-network
+
+
+  eureka-server:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+      args:
+        MODULE: eureka-server
+
+    image: microservices-lab/eureka-server:dev
+    container_name: eureka-server
+    hostname: eureka-server
+
+    ports:
+      - "8761:8761"
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider -q http://localhost:8761/actuator/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+    depends_on:
+      config-server:
+        condition: service_healthy
+
+    networks:
+      - lab-network
+
+
+  user-service:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+      args:
+        MODULE: user-service
+
+    image: microservices-lab/user-service:dev
+    container_name: user-service
+    hostname: user-service
+
+    ports:
+      - "8081:8081"
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider -q http://localhost:8081/actuator/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+
+    networks:
+      - lab-network
+
+
+  notification-service:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+      args:
+        MODULE: notification-service
+
+    image: microservices-lab/notification-service:dev
+    container_name: notification-service
+    hostname: notification-service
+
+    ports:
+      - "8082:8082"
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider -q http://localhost:8082/actuator/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+    depends_on:
+      eureka-server:
+        condition: service_healthy
+
+    networks:
+      - lab-network
+
+  api-gateway:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+      args:
+        MODULE: api-gateway
+
+    image: microservices-lab/api-gateway:dev
+    container_name: api-gateway
+    hostname: api-gateway
+
+    ports:
+      - "8088:8088"
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider -q http://localhost:8088/actuator/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+    depends_on:
+      user-service:
+        condition: service_healthy
+      notification-service:
+        condition: service_healthy
+
+    networks:
+      - lab-network
+
+
+networks:
+  lab-network:
+    external: true
