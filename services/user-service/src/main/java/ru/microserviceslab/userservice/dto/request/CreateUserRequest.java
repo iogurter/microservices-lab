@@ -1,4 +1,4 @@
-package ru.microserviceslab.userservice.dto;
+package ru.microserviceslab.userservice.dto.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

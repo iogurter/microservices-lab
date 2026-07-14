@@ -1,4 +1,4 @@
-package ru.microserviceslab.userservice.dto;
+package ru.microserviceslab.userservice.dto.response;
 
 import java.time.LocalDateTime;
 

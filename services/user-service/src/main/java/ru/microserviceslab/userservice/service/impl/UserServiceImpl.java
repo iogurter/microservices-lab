@@ -1,13 +1,14 @@
-package ru.microserviceslab.userservice.service;
+package ru.microserviceslab.userservice.service.impl;
 
 import org.springframework.stereotype.Service;
-import ru.microserviceslab.userservice.dto.CreateUserRequest;
-import ru.microserviceslab.userservice.dto.UserResponse;
+import ru.microserviceslab.userservice.dto.request.CreateUserRequest;
+import ru.microserviceslab.userservice.dto.response.UserResponse;
 import ru.microserviceslab.userservice.entity.User;
 import ru.microserviceslab.userservice.mapper.UserMapper;
 import ru.microserviceslab.userservice.repository.UserRepository;
 import ru.microserviceslab.userservice.kafka.UserProducer;
 import ru.microserviceslab.events.UserCreatedEvent;
+import ru.microserviceslab.userservice.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {

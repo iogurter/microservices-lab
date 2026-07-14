@@ -1,7 +1,7 @@
 package ru.microserviceslab.userservice.service;
 
-import ru.microserviceslab.userservice.dto.CreateUserRequest;
-import ru.microserviceslab.userservice.dto.UserResponse;
+import ru.microserviceslab.userservice.dto.request.CreateUserRequest;
+import ru.microserviceslab.userservice.dto.response.UserResponse;
 
 public interface UserService {
 

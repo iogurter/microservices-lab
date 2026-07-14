@@ -3,8 +3,8 @@ package ru.microserviceslab.userservice.controller;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
-import ru.microserviceslab.userservice.dto.CreateUserRequest;
-import ru.microserviceslab.userservice.dto.UserResponse;
+import ru.microserviceslab.userservice.dto.request.CreateUserRequest;
+import ru.microserviceslab.userservice.dto.response.UserResponse;
 import ru.microserviceslab.userservice.service.UserService;
 
 @RestController
